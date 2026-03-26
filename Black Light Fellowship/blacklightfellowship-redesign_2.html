@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Light Fellowship | Gospelizers · Publishers · Book Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C8A44E;
+    --gold-light: #E8D5A0;
+    --gold-dark: #9A7B2F;
+    --black: #0A0A0A;
+    --charcoal: #1A1A1A;
+    --slate: #2A2A2A;
+    --warm-gray: #3A3632;
+    --cream: #F5F0E8;
+    --cream-dark: #E8E0D0;
+    --white: #FAFAF8;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5A5550;
+    --text-light: #8A857E;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Libre Franklin', system-ui, sans-serif;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
+    --radius: 4px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--text-primary);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── UTILITY BAR ─── */
+  .utility-bar {
+    background: var(--charcoal);
+    color: var(--cream);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    padding: 8px 0;
+  }
+  .utility-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .utility-bar a {
+    color: var(--gold-light);
+    transition: color 0.2s;
+  }
+  .utility-bar a:hover { color: var(--gold); }
+  .utility-contact { display: flex; gap: 20px; align-items: center; }
+  .utility-contact span { color: rgba(255,255,255,0.5); }
+
+  /* ─── CONTAINER ─── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: var(--black);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    background: rgba(10,10,10,0.97);
+  }
+  .header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 24px;
+  }
+  .logo-link { display: flex; align-items: center; flex-shrink: 0; }
+  .logo-link img {
+    height: 64px;
+    width: auto;
+    transition: transform 0.3s ease;
+  }
+  .logo-link:hover img { transform: scale(1.02); }
+
+  .nav { display: flex; align-items: center; gap: 4px; }
+  .nav a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    transition: all 0.25s;
+    color: rgba(245,240,232,0.7);
+    white-space: nowrap;
+  }
+  .nav a:hover {
+    color: var(--cream);
+    background: rgba(255,255,255,0.08);
+  }
+  .nav a.donate-btn {
+    background: var(--gold);
+    color: var(--white);
+    font-weight: 600;
+    margin-left: 8px;
+  }
+  .nav a.donate-btn:hover {
+    background: var(--gold-dark);
+  }
+
+  /* hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 200;
+  }
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--cream);
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to right, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.45) 100%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 40%);
+  }
+  .hero .container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .hero-text { color: var(--cream); }
+  .hero-tag {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.7);
+    max-width: 480px;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--black);
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(200,164,78,0.3); }
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(200,164,78,0.4);
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .hero-book-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 400px;
+  }
+  .hero-book-stack a {
+    display: block;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+  }
+  .hero-book-stack a:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: var(--shadow-xl);
+  }
+  .hero-book-stack a:nth-child(2) { margin-top: 32px; }
+  .hero-book-stack a:nth-child(3) { margin-top: -16px; }
+  .hero-book-stack a:nth-child(4) { margin-top: 16px; }
+  .hero-book-stack img { width: 100%; aspect-ratio: 1/1.3; object-fit: cover; }
+
+  /* ─── SECTION HEADINGS ─── */
+  .section-heading {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-heading .overline {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .section-heading h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+  .section-heading p {
+    margin-top: 12px;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.95rem;
+  }
+
+  /* ─── FEATURED BOOKS ─── */
+  .featured-books {
+    padding: 80px 0;
+    background: var(--white);
+  }
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px;
+  }
+  .book-card {
+    background: var(--white);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+  }
+  .book-card-img {
+    aspect-ratio: 1/1.2;
+    overflow: hidden;
+    background: var(--cream);
+    position: relative;
+  }
+  .book-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .book-card:hover .book-card-img img {
+    transform: scale(1.05);
+  }
+  .book-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.35s;
+    display: flex;
+    justify-content: center;
+  }
+  .book-card:hover .book-card-overlay { opacity: 1; }
+  .book-card-overlay .btn {
+    font-size: 0.75rem;
+    padding: 10px 20px;
+  }
+  .book-card-body {
+    padding: 16px;
+  }
+  .book-card-body h3 {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .book-card-body h3 a:hover { color: var(--gold-dark); }
+  .book-card-meta {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+  .book-card-price {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--gold-dark);
+  }
+  .view-all-row {
+    text-align: center;
+    margin-top: 48px;
+  }
+  .btn-dark {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  .btn-dark:hover {
+    background: var(--black);
+    transform: translateY(-1px);
+  }
+
+  /* ─── ABOUT ─── */
+  .about-section {
+    padding: 80px 0;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,164,78,0.08) 0%, transparent 70%);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 56px;
+    align-items: start;
+    position: relative;
+  }
+  .about-portrait-wrap {
+    position: relative;
+  }
+  .about-portrait-wrap::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: -12px;
+    bottom: -12px;
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    opacity: 0.3;
+  }
+  .about-portrait {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 1;
+  }
+  .about-portrait img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+  }
+  .about-content {}
+  .about-content .overline {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .about-content h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .about-content p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+  .about-content .scripture {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--gold-dark);
+    font-size: 1.05rem;
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+    margin: 24px 0;
+    line-height: 1.7;
+  }
+  .about-content .btn { margin-top: 16px; }
+
+  /* ─── BLOG ─── */
+  .blog-section {
+    padding: 80px 0;
+    background: var(--white);
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .blog-card {
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+  }
+  .blog-card-img {
+    aspect-ratio: 3/2;
+    overflow: hidden;
+  }
+  .blog-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .blog-card:hover .blog-card-img img { transform: scale(1.06); }
+  .blog-card-body {
+    padding: 24px;
+  }
+  .blog-card-cats {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .blog-card-body h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 12px;
+  }
+  .blog-card-body h3 a:hover { color: var(--gold-dark); }
+  .blog-card-body p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .blog-card-date {
+    font-size: 0.75rem;
+    color: var(--text-light);
+  }
+
+  /* ─── SUPPORT CTA ─── */
+  .support-section {
+    padding: 80px 0;
+    background: var(--charcoal);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .support-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8A44E' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .support-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .support-text .overline {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .support-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+  .support-text p {
+    color: rgba(245,240,232,0.65);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .support-text .signature {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--gold-light);
+    font-size: 1.05rem;
+    margin-top: 8px;
+  }
+  .support-visual {
+    display: flex;
+    justify-content: center;
+  }
+  .support-visual img {
+    border-radius: 6px;
+    box-shadow: var(--shadow-xl);
+    max-height: 320px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--black);
+    color: rgba(245,240,232,0.5);
+    padding: 48px 0 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand img {
+    height: 52px;
+    width: auto;
+    margin-bottom: 16px;
+    filter: brightness(1.2);
+  }
+  .footer-brand p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .footer h4 {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    font-size: 0.88rem;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+  }
+  .fade-up.d1 { animation-delay: 0.1s; }
+  .fade-up.d2 { animation-delay: 0.2s; }
+  .fade-up.d3 { animation-delay: 0.3s; }
+  .fade-up.d4 { animation-delay: 0.4s; }
+  .fade-up.d5 { animation-delay: 0.5s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .hero .container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .hero-desc { margin-left: auto; margin-right: auto; }
+    .hero-buttons { justify-content: center; }
+    .hero-tag { justify-content: center; }
+    .hero-tag::before { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-portrait-wrap { max-width: 280px; margin: 0 auto; }
+    .about-content { text-align: center; }
+    .about-content .scripture { text-align: left; }
+    .about-content .btn { margin: 16px auto 0; }
+    .support-grid { grid-template-columns: 1fr; text-align: center; }
+    .support-visual { order: -1; }
+  }
+  @media (max-width: 768px) {
+    .nav { display: none; }
+    .hamburger { display: flex; }
+    .nav.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--white);
+      z-index: 150;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav.open a { font-size: 1.1rem; padding: 12px 24px; }
+    .books-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .hero-book-stack { max-width: 300px; gap: 10px; }
+    .utility-bar .container { justify-content: center; font-size: 0.72rem; }
+  }
+  @media (max-width: 480px) {
+    .books-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .book-card-body { padding: 12px; }
+    .book-card-body h3 { font-size: 0.88rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ UTILITY BAR ═══ -->
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-contact">
+      <span>773-826-7790</span>
+      <span>·</span>
+      <a href="/cdn-cgi/l/email-protection#7a13141c153a18161b191116131d120e1c1f1616150d0912130a54191517"><span class="__cf_email__" data-cfemail="b3daddd5dcf3d1dfd2d0d8dfdad4dbc7d5d6dfdfdcc4c0dbdac39dd0dcde">[email&#160;protected]</span></a>
+    </div>
+    <div>
+      <a href="https://blacklightfellowship.com/#subscribe">Subscribe to Newsletter</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <div class="container">
+    <a href="https://blacklightfellowship.com/" class="logo-link">
+      <img src="https://blacklightfellowship.com/wp-content/uploads/2018/10/BLF-HEADING-LOGO-CROSS-BIBLE-resized.jpg" alt="Black Light Fellowship">
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="https://blacklightfellowship.com/book-shop/">Shop</a>
+      <a href="https://blacklightfellowship.com/about-black-light-fellowship/">About</a>
+      <a href="https://blacklightfellowship.com/rev-dr-walter-mccray/">Rev. Dr. McCray</a>
+      <a href="https://blacklightfellowship.com/blog-2/">Blog</a>
+      <a href="https://blacklightfellowship.com/videos/">Videos</a>
+      <a href="https://blacklightfellowship.com/contact-us/">Contact</a>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AV765TAJVBURJ&source=url" class="donate-btn">Donate</a>
+    </nav>
+    <div class="hamburger" id="hamburger" onclick="document.getElementById('mainNav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="Praying.png" alt="">
+  </div>
+  <div class="container">
+    <div class="hero-text">
+      <div class="hero-tag fade-up">"Blessed Are They Who Read . . . and Hear!"</div>
+      <h1 class="fade-up d1">Shining as a <em>Black Light</em> of Christ</h1>
+      <p class="hero-desc fade-up d2">Publishers of Black Christian biblical literature since 1979. Gospelizer Dr. McCray offers a challenging theological perspective rooted in scripture and the African-descended experience.</p>
+      <div class="hero-buttons fade-up d3">
+        <a href="https://blacklightfellowship.com/book-shop/" class="btn btn-gold">Browse the Bookshop</a>
+        <a href="https://blacklightfellowship.com/about-black-light-fellowship/" class="btn btn-outline">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-up d4">
+      <div class="hero-book-stack">
+        <a href="https://blacklightfellowship.com/product/pro-black-pro-christ-pro-cross-african-descended-evangelical-identity-paperback/">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/03/pro-christ-and-pro-cross.jpg" alt="Pro-Black, Pro-Christ, Pro-Cross">
+        </a>
+        <a href="https://blacklightfellowship.com/product/the-black-presence-in-the-bible-volume-1-paperback-biblical-african/">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/03/black-presence-in-the-bible-e1537318979920.jpg" alt="The Black Presence in the Bible Vol 1">
+        </a>
+        <a href="https://blacklightfellowship.com/product/defiant-political-oppressors-invite-a-divine-judgment/">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2021/03/DPOIADJ-WEB-scaled-e1616858879506-800x800.jpg" alt="Defiant Political Oppressors">
+        </a>
+        <a href="https://blacklightfellowship.com/product/the-black-presence-in-the-bible-and-the-table-of-nations-volume-2-paperback/">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/03/black-presence-in-the-bible-2.jpg" alt="The Black Presence in the Bible Vol 2">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED BOOKS ═══ -->
+<section class="featured-books">
+  <div class="container">
+    <div class="section-heading">
+      <div class="overline">Bookshop</div>
+      <h2>Featured Publications</h2>
+      <p>Explore Dr. McCray's collection of biblical studies, theological works, and inspirational resources.</p>
+    </div>
+    <div class="books-grid">
+
+      <div class="book-card">
+        <div class="book-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/03/pro-christ-and-pro-cross.jpg" alt="Pro-Black, Pro-Christ, Pro-Cross">
+          <div class="book-card-overlay"><a href="https://blacklightfellowship.com/product/pro-black-pro-christ-pro-cross-african-descended-evangelical-identity-paperback/" class="btn btn-gold">View Book</a></div>
+        </div>
+        <div class="book-card-body">
+          <h3><a href="https://blacklightfellowship.com/product/pro-black-pro-christ-pro-cross-african-descended-evangelical-identity-paperback/">Pro-Black, Pro-Christ, Pro-Cross</a></h3>
+          <div class="book-card-meta">African-Descended Evangelical Identity</div>
+          <div class="book-card-price">$34.95</div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/03/black-presence-in-the-bible-e1537318979920.jpg" alt="The Black Presence in the Bible Vol 1">
+          <div class="book-card-overlay"><a href="https://blacklightfellowship.com/product/the-black-presence-in-the-bible-volume-1-paperback-biblical-african/" class="btn btn-gold">View Book</a></div>
+        </div>
+        <div class="book-card-body">
+          <h3><a href="https://blacklightfellowship.com/product/the-black-presence-in-the-bible-volume-1-paperback-biblical-african/">The Black Presence in the Bible (Vol 1)</a></h3>
+          <div class="book-card-meta">Biblical · Black-African Biblical Studies</div>
+          <div class="book-card-price">$14.95</div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/03/black-presence-in-the-bible-2.jpg" alt="The Black Presence in the Bible Vol 2">
+          <div class="book-card-overlay"><a href="https://blacklightfellowship.com/product/the-black-presence-in-the-bible-and-the-table-of-nations-volume-2-paperback/" class="btn btn-gold">View Book</a></div>
+        </div>
+        <div class="book-card-body">
+          <h3><a href="https://blacklightfellowship.com/product/the-black-presence-in-the-bible-and-the-table-of-nations-volume-2-paperback/">The Black Presence in the Bible & Table of Nations (Vol 2)</a></h3>
+          <div class="book-card-meta">Biblical · Black-African Biblical Studies</div>
+          <div class="book-card-price">$14.95</div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2021/03/DPOIADJ-WEB-scaled-e1616858879506-800x800.jpg" alt="Defiant Political Oppressors">
+          <div class="book-card-overlay"><a href="https://blacklightfellowship.com/product/defiant-political-oppressors-invite-a-divine-judgment/" class="btn btn-gold">View Book</a></div>
+        </div>
+        <div class="book-card-body">
+          <h3><a href="https://blacklightfellowship.com/product/defiant-political-oppressors-invite-a-divine-judgment/">Defiant Political Oppressors Invite A Divine Judgment</a></h3>
+          <div class="book-card-meta">Political Ethics · Theology</div>
+          <div class="book-card-price">$21.95</div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/03/Untitled-800x800.jpg" alt="Black Biblical Studies">
+          <div class="book-card-overlay"><a href="https://blacklightfellowship.com/product/black-biblical-studies-charles-b-copher-paperback/" class="btn btn-gold">View Book</a></div>
+        </div>
+        <div class="book-card-body">
+          <h3><a href="https://blacklightfellowship.com/product/black-biblical-studies-charles-b-copher-paperback/">Black Biblical Studies: Anthology of Charles B. Copher</a></h3>
+          <div class="book-card-meta">Biblical · Critical/Theological Issues</div>
+          <div class="book-card-price">$14.95</div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/03/bpp-new-1-800x800.jpg" alt="The Black Presence and The Passion">
+          <div class="book-card-overlay"><a href="https://blacklightfellowship.com/product/the-black-presence-and-the-passion/" class="btn btn-gold">View Book</a></div>
+        </div>
+        <div class="book-card-body">
+          <h3><a href="https://blacklightfellowship.com/product/the-black-presence-and-the-passion/">The Black Presence and The Passion</a></h3>
+          <div class="book-card-meta">Apologetic · Biblical</div>
+          <div class="book-card-price">$9.95</div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/09/FJAMYOSB-FC.jpg" alt="Follow Jesus and MYOSB">
+          <div class="book-card-overlay"><a href="https://blacklightfellowship.com/product/follow-jesus-and-m-y-o-s-b-mind-your-own-spiritual-business/" class="btn btn-gold">View Book</a></div>
+        </div>
+        <div class="book-card-body">
+          <h3><a href="https://blacklightfellowship.com/product/follow-jesus-and-m-y-o-s-b-mind-your-own-spiritual-business/">Follow Jesus and M.Y.O.S.B!</a></h3>
+          <div class="book-card-meta">Discipleship · Spiritual Formation</div>
+          <div class="book-card-price">$9.95</div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/09/RTTR-FCV-BLF-Website-800x800.jpg" alt="Riches to Truest Riches">
+          <div class="book-card-overlay"><a href="https://blacklightfellowship.com/product/riches-to-truest-riches/" class="btn btn-gold">View Book</a></div>
+        </div>
+        <div class="book-card-body">
+          <h3><a href="https://blacklightfellowship.com/product/riches-to-truest-riches/">Riches to Truest Riches!</a></h3>
+          <div class="book-card-meta">Spiritual Enrichment</div>
+          <div class="book-card-price">$3.99</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="view-all-row">
+      <a href="https://blacklightfellowship.com/book-shop/" class="btn btn-dark">View All Books →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-portrait-wrap">
+        <div class="about-portrait">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/07/Rev-Dr-Walter-Arthur-McCray-Author-2-e1531956682804-251x300.jpg" alt="Rev. Dr. Walter Arthur McCray">
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="overline">About the Founder</div>
+        <h2>Rev. Dr. Walter Arthur McCray</h2>
+        <p>In 1979, <strong>Black Light Fellowship</strong>, a small African-American publishing and media company, formed to begin "shining as a black light of Christ," by producing Black Christian biblical literature. Since then, it has been our mission to spread His message in that literature with as many people as possible.</p>
+        <div class="scripture">
+          "Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven" — Matthew 5:16
+        </div>
+        <p>Black Light Fellowship is blessed to be able to give good works a place to shine. We invite you to visit the bookstore and explore a range of theological, historical, and spiritual resources for people of African descent and all humanity.</p>
+        <a href="https://blacklightfellowship.com/rev-dr-walter-mccray/" class="btn btn-dark">Read More About Dr. McCray →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BLOG ═══ -->
+<section class="blog-section">
+  <div class="container">
+    <div class="section-heading">
+      <div class="overline">From the Blog</div>
+      <h2>Fresh Perspectives</h2>
+    </div>
+    <div class="blog-grid">
+
+      <a href="https://blacklightfellowship.com/a-mothering-editor/" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2018/03/blog-600x400.jpg" alt="A Mothering Editor">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-cats">Family · Publishing Editing</div>
+          <h3>A Mothering Editor</h3>
+          <p>The 2022 season of Mother's Day is a fitting occasion to highlight several special qualities of the person claimed as a "mothering editor," who mothers the child-like creations of both novice and mature writers alike.</p>
+          <div class="blog-card-date">May 7, 2022</div>
+        </div>
+      </a>
+
+      <a href="https://blacklightfellowship.com/absorbing-the-passion-via-black-and-white-racial-ethnic-dynamics-2/" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2022/05/BPP-CVRBDR-Half-e1651769672894-600x400.jpg" alt="Absorbing The Passion">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-cats">Biblical-Theological · Black Presence</div>
+          <h3>Absorbing The Passion via Black and White Racial-Ethnic Dynamics</h3>
+          <p>An appeal to step back and take a more perceptive look at the true picture of the racial and ethnocultural dynamics of the Crucifixion.</p>
+          <div class="blog-card-date">May 5, 2022</div>
+        </div>
+      </a>
+
+      <a href="https://blacklightfellowship.com/name-your-cross-2/" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://blacklightfellowship.com/wp-content/uploads/2022/05/Name-Your-Cross-graphic-1-scaled-e1651760669994-600x400.jpg" alt="Name Your Cross">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-cats">Mission</div>
+          <h3>Name Your Cross</h3>
+          <p>A reflection on gaining a better understanding of the "cross" in life and ministry, and how wisdom about the cross has brought about a major change in pursuing spiritual formation.</p>
+          <div class="blog-card-date">May 5, 2022</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SUPPORT CTA ═══ -->
+<section class="support-section">
+  <div class="container">
+    <div class="support-grid">
+      <div class="support-text">
+        <div class="overline">Support the Mission</div>
+        <h2>Help Keep the Light Shining</h2>
+        <p>Thank you for supporting the publishing and media mission of Black Light Fellowship. Besides selling product, from time-to-time we also donate books and services to those who are less fortunate. Your gifts help us to continue this "Black Light" ministry, and you give us encouragement to continue our work for Jesus Christ!</p>
+        <p>No gift is too small. Peace!</p>
+        <div class="signature">— Rev. Dr. Walter A. McCray, Gospelizer</div>
+        <br>
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AV765TAJVBURJ&source=url" class="btn btn-gold">Donate via PayPal</a>
+      </div>
+      <div class="support-visual">
+        <img src="https://blacklightfellowship.com/wp-content/uploads/2018/09/PlaceHolder-modified-4-b-1024x511.jpg" alt="A Beacon of Christ">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://blacklightfellowship.com/wp-content/uploads/2018/10/BLF-HEADING-LOGO-CROSS-BIBLE-resized.jpg" alt="Black Light Fellowship">
+        <p>Publishers of Black Christian biblical literature since 1979. Shining as a black light of Christ through books, media, and community.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul class="footer-links">
+          <li><a href="https://blacklightfellowship.com/book-shop/">Book Shop</a></li>
+          <li><a href="https://blacklightfellowship.com/about-black-light-fellowship/">About Us</a></li>
+          <li><a href="https://blacklightfellowship.com/rev-dr-walter-mccray/">Rev. Dr. McCray</a></li>
+          <li><a href="https://blacklightfellowship.com/blog-2/">Blog</a></li>
+          <li><a href="https://blacklightfellowship.com/videos/">Videos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul class="footer-links">
+          <li><a href="https://blacklightfellowship.com/contact-us/">Contact Us</a></li>
+          <li><a href="tel:7738267790">773-826-7790</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#61080f070e21030d00020a0d0806091507040d0d0e16120908114f020e0c"><span class="__cf_email__" data-cfemail="50393e363f10323c31333b3c3937382436353c3c3f27233839207e333f3d">[email&#160;protected]</span></a></li>
+          <li><a href="https://blacklightfellowship.com/#subscribe">Subscribe</a></li>
+          <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AV765TAJ
